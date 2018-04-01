@@ -7,12 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A81B11DD2070D94F0080F81C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81B11DC2070D94F0080F81C /* AlertManager.swift */; };
+		A848F168206E2C4800668E1D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F167206E2C4800668E1D /* DataManager.swift */; };
+		A848F16B206E2C5B00668E1D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F16A206E2C5B00668E1D /* APIManager.swift */; };
+		A848F16D206E3C2600668E1D /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F16C206E3C2600668E1D /* LoginData.swift */; };
+		A848F16F206E447900668E1D /* NextResponderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F16E206E447900668E1D /* NextResponderTextField.swift */; };
+		A848F172206E6CB700668E1D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F171206E6CB700668E1D /* Response.swift */; };
+		A848F174206E709800668E1D /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F173206E709800668E1D /* KeyboardLayoutConstraint.swift */; };
+		A848F176206E829800668E1D /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F175206E829800668E1D /* AccountTableViewCell.swift */; };
+		A848F179206E8FC200668E1D /* PaymentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848F178206E8FC200668E1D /* PaymentData.swift */; };
+		A84FA783206F8BA000260BB4 /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FA782206F8BA000260BB4 /* EmailTextField.swift */; };
+		A84FA785206F8EBA00260BB4 /* ErrorMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FA784206F8EBA00260BB4 /* ErrorMessageLabel.swift */; };
 		A8F90F8A206D328B0010EFBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90F89206D328B0010EFBD /* AppDelegate.swift */; };
-		A8F90F8C206D328B0010EFBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90F8B206D328B0010EFBD /* ViewController.swift */; };
 		A8F90F8F206D328B0010EFBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F90F8D206D328B0010EFBD /* Main.storyboard */; };
 		A8F90F91206D328B0010EFBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F90F90206D328B0010EFBD /* Assets.xcassets */; };
 		A8F90F94206D328B0010EFBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F90F92206D328B0010EFBD /* LaunchScreen.storyboard */; };
 		A8F90F9F206D328B0010EFBD /* Moneybox_TechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90F9E206D328B0010EFBD /* Moneybox_TechTests.swift */; };
+		A8F90FAA206D33720010EFBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90FA9206D33720010EFBD /* LoginViewController.swift */; };
+		A8F90FAC206D337C0010EFBD /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90FAB206D337C0010EFBD /* AccountsViewController.swift */; };
+		A8F90FAE206D33860010EFBD /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90FAD206D33860010EFBD /* ProductViewController.swift */; };
+		A8F90FB0206D38F10010EFBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90FAF206D38F10010EFBD /* User.swift */; };
+		A8F90FB3206D39030010EFBD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90FB2206D39030010EFBD /* Session.swift */; };
+		A8F90FB5206D390F0010EFBD /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90FB4206D390F0010EFBD /* Account.swift */; };
+		A8F90FB7206D391A0010EFBD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F90FB6206D391A0010EFBD /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +43,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A81B11DC2070D94F0080F81C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		A848F167206E2C4800668E1D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A848F16A206E2C5B00668E1D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A848F16C206E3C2600668E1D /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		A848F16E206E447900668E1D /* NextResponderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextResponderTextField.swift; sourceTree = "<group>"; };
+		A848F171206E6CB700668E1D /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		A848F173206E709800668E1D /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		A848F175206E829800668E1D /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		A848F178206E8FC200668E1D /* PaymentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentData.swift; sourceTree = "<group>"; };
+		A84FA782206F8BA000260BB4 /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
+		A84FA784206F8EBA00260BB4 /* ErrorMessageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageLabel.swift; sourceTree = "<group>"; };
 		A8F90F86206D328B0010EFBD /* Moneybox Tech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moneybox Tech.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F90F89206D328B0010EFBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A8F90F8B206D328B0010EFBD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A8F90F8E206D328B0010EFBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8F90F90206D328B0010EFBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8F90F93206D328B0010EFBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +63,13 @@
 		A8F90F9A206D328B0010EFBD /* Moneybox TechTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Moneybox TechTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F90F9E206D328B0010EFBD /* Moneybox_TechTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moneybox_TechTests.swift; sourceTree = "<group>"; };
 		A8F90FA0206D328B0010EFBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8F90FA9206D33720010EFBD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A8F90FAB206D337C0010EFBD /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		A8F90FAD206D33860010EFBD /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		A8F90FAF206D38F10010EFBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A8F90FB2206D39030010EFBD /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A8F90FB4206D390F0010EFBD /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		A8F90FB6206D391A0010EFBD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +90,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A848F169206E2C5000668E1D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A848F167206E2C4800668E1D /* DataManager.swift */,
+				A848F16A206E2C5B00668E1D /* APIManager.swift */,
+				A81B11DC2070D94F0080F81C /* AlertManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A848F170206E447E00668E1D /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				A84FA781206F8B7B00260BB4 /* Text Fields */,
+				A848F173206E709800668E1D /* KeyboardLayoutConstraint.swift */,
+				A84FA784206F8EBA00260BB4 /* ErrorMessageLabel.swift */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		A848F177206E852D00668E1D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A848F175206E829800668E1D /* AccountTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A84FA781206F8B7B00260BB4 /* Text Fields */ = {
+			isa = PBXGroup;
+			children = (
+				A848F16E206E447900668E1D /* NextResponderTextField.swift */,
+				A84FA782206F8BA000260BB4 /* EmailTextField.swift */,
+			);
+			path = "Text Fields";
+			sourceTree = "<group>";
+		};
 		A8F90F7D206D328B0010EFBD = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +149,13 @@
 			isa = PBXGroup;
 			children = (
 				A8F90F89206D328B0010EFBD /* AppDelegate.swift */,
-				A8F90F8B206D328B0010EFBD /* ViewController.swift */,
+				A8F90FA9206D33720010EFBD /* LoginViewController.swift */,
+				A8F90FAB206D337C0010EFBD /* AccountsViewController.swift */,
+				A8F90FAD206D33860010EFBD /* ProductViewController.swift */,
+				A848F169206E2C5000668E1D /* Managers */,
+				A8F90FB1206D38F60010EFBD /* Objects */,
+				A848F177206E852D00668E1D /* Cells */,
+				A848F170206E447E00668E1D /* Subclasses */,
 				A8F90F8D206D328B0010EFBD /* Main.storyboard */,
 				A8F90F90206D328B0010EFBD /* Assets.xcassets */,
 				A8F90F92206D328B0010EFBD /* LaunchScreen.storyboard */,
@@ -94,6 +171,20 @@
 				A8F90FA0206D328B0010EFBD /* Info.plist */,
 			);
 			path = "Moneybox TechTests";
+			sourceTree = "<group>";
+		};
+		A8F90FB1206D38F60010EFBD /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A8F90FAF206D38F10010EFBD /* User.swift */,
+				A8F90FB2206D39030010EFBD /* Session.swift */,
+				A8F90FB4206D390F0010EFBD /* Account.swift */,
+				A8F90FB6206D391A0010EFBD /* Product.swift */,
+				A848F16C206E3C2600668E1D /* LoginData.swift */,
+				A848F178206E8FC200668E1D /* PaymentData.swift */,
+				A848F171206E6CB700668E1D /* Response.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +290,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8F90F8C206D328B0010EFBD /* ViewController.swift in Sources */,
+				A84FA783206F8BA000260BB4 /* EmailTextField.swift in Sources */,
+				A84FA785206F8EBA00260BB4 /* ErrorMessageLabel.swift in Sources */,
+				A8F90FAA206D33720010EFBD /* LoginViewController.swift in Sources */,
+				A8F90FB7206D391A0010EFBD /* Product.swift in Sources */,
+				A848F16B206E2C5B00668E1D /* APIManager.swift in Sources */,
+				A848F176206E829800668E1D /* AccountTableViewCell.swift in Sources */,
+				A848F179206E8FC200668E1D /* PaymentData.swift in Sources */,
+				A8F90FAC206D337C0010EFBD /* AccountsViewController.swift in Sources */,
+				A8F90FB3206D39030010EFBD /* Session.swift in Sources */,
+				A81B11DD2070D94F0080F81C /* AlertManager.swift in Sources */,
+				A848F16F206E447900668E1D /* NextResponderTextField.swift in Sources */,
+				A848F172206E6CB700668E1D /* Response.swift in Sources */,
+				A8F90FAE206D33860010EFBD /* ProductViewController.swift in Sources */,
+				A8F90FB0206D38F10010EFBD /* User.swift in Sources */,
 				A8F90F8A206D328B0010EFBD /* AppDelegate.swift in Sources */,
+				A848F168206E2C4800668E1D /* DataManager.swift in Sources */,
+				A848F174206E709800668E1D /* KeyboardLayoutConstraint.swift in Sources */,
+				A8F90FB5206D390F0010EFBD /* Account.swift in Sources */,
+				A848F16D206E3C2600668E1D /* LoginData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
