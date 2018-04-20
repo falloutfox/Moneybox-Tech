@@ -33,19 +33,7 @@ class LoginViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		let user = DataManager.getInstance().getUser()
-		
-		if user == nil {
-			shouldHideLoginStack(shouldHide: false)
-			//Prefill user info
-			emailTextField.text = UserData.email
-			passwordTextField.text = UserData.password
-		} else {
-			shouldHideLoginStack(shouldHide: true)
-			
-			let fullName = user!.firstName + " " + user!.lastName
-			fullNameLabel.text = fullName
-		}
+		self.updateUI()
 	}
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +52,22 @@ class LoginViewController: UIViewController {
 	func shouldHideLoginStack(shouldHide: Bool) {
 		self.userStackView.isHidden = !shouldHide
 		self.loginStackView.isHidden = shouldHide
+	}
+	
+	func updateUI() {
+		let user = DataManager.getInstance().getUser()
+		
+		if user == nil {
+			shouldHideLoginStack(shouldHide: false)
+			//Prefill user info
+			emailTextField.text = UserData.email
+			passwordTextField.text = UserData.password
+		} else {
+			shouldHideLoginStack(shouldHide: true)
+			
+			let fullName = user!.firstName + " " + user!.lastName
+			fullNameLabel.text = fullName
+		}
 	}
 	
 	//MARK: - Buttons
@@ -130,8 +134,7 @@ class LoginViewController: UIViewController {
 			DataManager.getInstance().setSession(session: session)
 				
 			DispatchQueue.main.async {
-				self.performSegue(withIdentifier: "SuccesfulLogin",
-								  sender: self)
+				self.updateUI()
 				self.loginButton.isEnabled = true
 			}
 		}
@@ -161,6 +164,7 @@ class LoginViewController: UIViewController {
 			AlertManager.bearerTokenExpired(viewController: self)
 		} else {
 			self.errorMessageLabel.displayError(message: error.message)
+			self.loginButton.isEnabled = true
 		}
 	}
 }
