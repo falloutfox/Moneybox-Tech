@@ -21,6 +21,10 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var fullNameLabel: UILabel!
 	@IBOutlet weak var accountsButton: UIButton!
 	@IBOutlet weak var logoutButton: UIButton!
+	
+	var dataManager: DataManager?
+	var apiManager: APIManager?
+	var alertManager: AlertManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +59,7 @@ class LoginViewController: UIViewController {
 	}
 	
 	func updateUI() {
-		let user = DataManager.getInstance().getUser()
+		let user = self.dataManager?.getUser()
 		
 		if user == nil {
 			shouldHideLoginStack(shouldHide: false)
@@ -78,12 +82,12 @@ class LoginViewController: UIViewController {
 			logoutButton.isEnabled = true
 		}
 		
-		if let error = APIManager.logoutUser() {
+		if let error = self.apiManager?.logoutUser() {
 			print(error)
 			return
 		}
 		
-		DataManager.getInstance().logoutUser()
+		self.dataManager?.logoutUser()
 		shouldHideLoginStack(shouldHide: false)
 	}
 	
@@ -107,7 +111,7 @@ class LoginViewController: UIViewController {
 		let userData = LoginData(email: email,
 								 password: password)
 		
-		APIManager.logIn(userData: userData) { (data, error) in
+		self.apiManager?.logIn(userData: userData) { (data, error) in
 			guard error == nil else {
 				DispatchQueue.main.async {
 					self.resolve(error: error!)
@@ -116,7 +120,6 @@ class LoginViewController: UIViewController {
 			}
 			
 			guard let data = data else {
-				//Not sure when this would occur
 				return
 			}
 			
@@ -130,8 +133,8 @@ class LoginViewController: UIViewController {
 			let user = response.user
 			let session = response.session
 				
-			DataManager.getInstance().setUser(user: user)
-			DataManager.getInstance().setSession(session: session)
+			self.dataManager?.setUser(user: user)
+			self.dataManager?.setSession(session: session)
 				
 			DispatchQueue.main.async {
 				self.updateUI()
@@ -142,12 +145,13 @@ class LoginViewController: UIViewController {
 	
 	//MARK: - Errors
 	
+	//TODO: move to own class
 	func resolve(error: Error) {
 		let errorCode = (error as NSError).code
 		
 		switch errorCode {
 		case -1009:
-			AlertManager.networkAlert(viewController: self)
+			self.alertManager?.networkAlert(viewController: self)
 			self.loginButton.isEnabled = true
 			break
 		default:
@@ -155,16 +159,30 @@ class LoginViewController: UIViewController {
 		}
 	}
 	
+	//TODO: move to own class
 	func attemptToDecodeJSON(data: Data) {
 		guard let error = try? JSONDecoder().decode(ErrorResponse.self, from: data) else {
 			return
 		}
 		
 		if error.name == "Bearer token expired" {
-			AlertManager.bearerTokenExpired(viewController: self)
+			self.alertManager?.bearerTokenExpired(viewController: self)
 		} else {
 			self.errorMessageLabel.displayError(message: error.message)
 			self.loginButton.isEnabled = true
 		}
 	}
+	
+	//MARK: - Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "UserDetail" {
+			let accountsVC = segue.destination as! AccountsViewController
+			
+			accountsVC.dataManager = self.dataManager
+			accountsVC.apiManager = self.apiManager
+			accountsVC.alertManager = self.alertManager
+		}
+	}
+	
 }

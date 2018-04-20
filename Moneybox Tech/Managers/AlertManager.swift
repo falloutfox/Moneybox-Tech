@@ -10,9 +10,15 @@ import UIKit
 
 ///Manager for shared alert objects
 class AlertManager: NSObject {
+	let dataManager: DataManager
+	
+	init(dataManager dM: DataManager) {
+		self.dataManager = dM
+	}
 	
 	///No network alert
-	public class func networkAlert(viewController: UIViewController) {
+	//TODO: remove need for UIViewController
+	public func networkAlert(viewController: UIViewController) {
 		let alert = UIAlertController(title: "Network Error",
 									  message: "The Internet connection..",
 									  preferredStyle: .alert)
@@ -38,7 +44,9 @@ class AlertManager: NSObject {
 							   completion: nil)
 	}
 	
-	public class func bearerTokenExpired(viewController: UIViewController) {
+	///The User's Bearer Token has expired
+	//TODO: remove need for UIViewController
+	public func bearerTokenExpired(viewController: UIViewController) {
 		let alert = UIAlertController(title: "Logged Out",
 									  message: "You've been logged out due to inactivity.",
 									  preferredStyle: .alert)
@@ -46,7 +54,7 @@ class AlertManager: NSObject {
 								   style: .default)
 		{ (_) in
 			DispatchQueue.main.async {
-				DataManager.getInstance().logoutUser()
+				self.dataManager.logoutUser()
 				viewController.navigationController?.popToRootViewController(animated: true)
 			}
 		}

@@ -32,6 +32,11 @@ public enum APIManagerError:Error {
 
 ///Interacts with the Moneybox API
 class APIManager: NSObject {
+	let dataManager: DataManager
+	
+	init(dataManager dM: DataManager) {
+		self.dataManager = dM
+	}
 	
 	//MARK: - Private
 	
@@ -40,7 +45,7 @@ class APIManager: NSObject {
 	- Parameter endPoint: An `Endpoint` object specifying the API end point
 	- Returns: A complete `URLRequest` ready to use
 	*/
-	private class func createRequest(to endPoint: EndPoints) -> URLRequest? {
+	private func createRequest(to endPoint: EndPoints) -> URLRequest? {
 		let fullURLString = Constants.apiURL + endPoint.rawValue
 		guard let url = URL(string: fullURLString) else {
 			return nil
@@ -52,7 +57,7 @@ class APIManager: NSObject {
 		request.addValue(Constants.appVersion, forHTTPHeaderField: "appVersion")
 		request.addValue(Constants.apiVersion, forHTTPHeaderField: "apiVersion")
 		
-		let sessionData = DataManager.getInstance().getSession()
+		let sessionData = self.dataManager.getSession()
 		if let session = sessionData.session {
 			let bearerString = "Bearer " + session.bearerToken
 			request.addValue(bearerString, forHTTPHeaderField: "Authorization")
@@ -77,8 +82,8 @@ class APIManager: NSObject {
 		- response: The data returned from the `JSON`
 		- error: Any errors that may have occured
 	*/
-	private class func completeTask(request: URLRequest,
-									completion: ((_ response: Data?, _ error: Error?) -> Void)?) {
+	private func completeTask(request: URLRequest,
+							  completion: ((_ response: Data?, _ error: Error?) -> Void)?) {
 		let config = URLSessionConfiguration.default
 		let session = URLSession(configuration: config)
 		let task = session.dataTask(with: request) { (responseData, response, responseError) in
@@ -102,8 +107,8 @@ class APIManager: NSObject {
 		- response: The data returned from the `JSON`
 		- error: Any errors that may have occured
 	*/
-	public class func logIn(userData: LoginData,
-							completion: @escaping (_ response: Data?, _ error: Error?) -> Void) {
+	public func logIn(userData: LoginData,
+					  completion: @escaping (_ response: Data?, _ error: Error?) -> Void) {
 		guard var request = createRequest(to: .login) else {
 			completion(nil, APIManagerError.failedToCreateRequest)
 			return
@@ -127,7 +132,7 @@ class APIManager: NSObject {
 		- response: The data returned from the `JSON`
 		- error: Any errors that may have occured
 	*/
-	public class func fetchAccounts(completion: @escaping (_ response: Data?, _ error: Error?) -> Void) {
+	public func fetchAccounts(completion: @escaping (_ response: Data?, _ error: Error?) -> Void) {
 		guard let request = createRequest(to: .products) else {
 			completion(nil, APIManagerError.failedToCreateRequest)
 			return
@@ -146,8 +151,8 @@ class APIManager: NSObject {
 		- response: The data returned from the `JSON`
 		- error: Any errors that may have occured
 	*/
-	public class func addPayment(to account: Account,
-								 completion: @escaping (_ response: Data?, _ error: Error?) -> Void) {
+	public func addPayment(to account: Account,
+						   completion: @escaping (_ response: Data?, _ error: Error?) -> Void) {
 		guard var request = createRequest(to: .payment) else {
 			completion(nil, APIManagerError.failedToCreateRequest)
 			return
@@ -171,7 +176,7 @@ class APIManager: NSObject {
 	Sends a log out request to the API
 	- Returns: An `APIManagerError` if needed or nil
 	*/
-	public class func logoutUser() -> APIManagerError? {
+	public func logoutUser() -> APIManagerError? {
 		guard let request = createRequest(to: .logout) else {
 			return .failedToCreateRequest
 		}

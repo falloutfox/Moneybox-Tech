@@ -12,7 +12,9 @@ class ProductViewController: UIViewController {
 	@IBOutlet weak var moneyboxLabel: UILabel!
 	@IBOutlet weak var addMoneyButton: UIButton!
 	
-	var account: Account!
+	weak var apiManager: APIManager?
+	weak var alertManager: AlertManager?
+	weak var account: Account!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class ProductViewController: UIViewController {
 	
 	@IBAction func didTapAddMoneyButton(sender: UIButton) {
 		addMoneyButton.isEnabled = false
-		APIManager.addPayment(to: account) { (data, error) in
+		self.apiManager?.addPayment(to: account) { (data, error) in
 			guard error == nil else {
 				DispatchQueue.main.async {
 					self.resolve(error: error!)
@@ -44,7 +46,6 @@ class ProductViewController: UIViewController {
 			}
 			
 			guard let data = data else {
-				//Not sure if this can happen
 				return
 			}
 			
@@ -70,36 +71,29 @@ class ProductViewController: UIViewController {
 	
 	//MARK: - Errors
 	
+	//TODO: move to own class
 	func resolve(error: Error) {
 		let errorCode = (error as NSError).code
 		
 		switch errorCode {
 		case -1009:
-			AlertManager.networkAlert(viewController: self)
+			self.alertManager?.networkAlert(viewController: self)
 			break
 		default:
 			return
 		}
 	}
 	
+	//TODO: move to own class
 	func attemptToDecodeJSON(data: Data) {
 		guard let error = try? JSONDecoder().decode(ErrorResponse.self, from: data) else {
 			return
 		}
 		
 		if error.name == "Bearer token expired" {
-			AlertManager.bearerTokenExpired(viewController: self)
+			self.alertManager?.bearerTokenExpired(viewController: self)
 		}
 	}
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
+	//MARK: -
 }

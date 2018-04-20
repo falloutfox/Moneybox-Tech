@@ -20,24 +20,8 @@ enum DataManagerError: Error {
 	case noSessionData
 }
 
-///A singleton that contains the data necessary for the app to function
+///An object that contains the data necessary for the app to function
 class DataManager: NSObject {
-	///The singleton object to hold data
-	private static var _me: DataManager?
-	
-	private override init() {}
-	
-	/**
-	Fetches the singleton `DataManager` or creates a new one if needed.
-	- Returns: A `DataManager` object
-	*/
-	public static func getInstance() -> DataManager {
-		if _me == nil {
-			_me = DataManager()
-		}
-		return _me!
-	}
-	
 	///The currently logged in user
 	private var user: User?
 	
@@ -50,6 +34,7 @@ class DataManager: NSObject {
 	Fetches the `User` object, or returns an `DataManagerError` if the object is `nil`
 	- Returns: A `User?` optional
 	*/
+	
 	public func getUser() -> User? {
 		return self.user
 	}

@@ -11,6 +11,10 @@ import UIKit
 class AccountsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	@IBOutlet weak var accountsTableView: UITableView!
 	
+	weak var apiManager: APIManager?
+	weak var dataManager: DataManager?
+	weak var alertManager: AlertManager?
+	
 	var user: User = User()
 	var selectedAccount: Account?
 	
@@ -28,7 +32,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
 	//MARK: - Data
 	
 	func checkForAccounts() {
-		guard let possUser = DataManager.getInstance().getUser() else {
+		guard let possUser = self.dataManager?.getUser() else {
 			//FIXME: do something to get user
 			return
 		}
@@ -44,7 +48,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
 	}
 	
 	func fetchAccounts() {
-		APIManager.fetchAccounts(completion: { (data, error) in
+		self.apiManager?.fetchAccounts(completion: { (data, error) in
 			guard error == nil else {
 				DispatchQueue.main.async {
 					self.resolve(error: error!)
@@ -53,7 +57,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
 			}
 			
 			guard let data = data else {
-				//Not sure if this can happen
 				return
 			}
 			
@@ -74,25 +77,27 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
 	
 	//MARK: - Errors
 	
+	//TODO: move to own class
 	func resolve(error: Error) {
 		let errorCode = (error as NSError).code
 		
 		switch errorCode {
 		case -1009:
-			AlertManager.networkAlert(viewController: self)
+			self.alertManager?.networkAlert(viewController: self)
 			break
 		default:
 			return
 		}
 	}
 	
+	//TODO: move to own class
 	func attemptToDecodeJSON(data: Data) {
 		guard let error = try? JSONDecoder().decode(ErrorResponse.self, from: data) else {
 			return
 		}
 		
 		if error.name == "Bearer token expired" {
-			AlertManager.bearerTokenExpired(viewController: self)
+			self.alertManager?.bearerTokenExpired(viewController: self)
 		}
 	}
 	
@@ -144,6 +149,8 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
 			let productVC = segue.destination as! ProductViewController
 			
 			productVC.account = self.selectedAccount!
+			productVC.apiManager = self.apiManager
+			productVC.alertManager = self.alertManager
 		}
 	}
 }

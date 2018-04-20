@@ -179,7 +179,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="DR1-M9-QOA" kind="show" id="KxZ-FB-WVJ"/>
+                                            <segue destination="DR1-M9-QOA" kind="show" identifier="UserDetail" id="KxZ-FB-WVJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQx-Ky-Mb9">
@@ -227,7 +227,6 @@
                         <outlet property="logoutButton" destination="zQx-Ky-Mb9" id="Ykl-xq-egf"/>
                         <outlet property="passwordTextField" destination="556-Jk-USq" id="q6w-MJ-Ntu"/>
                         <outlet property="userStackView" destination="8aO-HG-n5A" id="WqT-x9-QVC"/>
-                        <segue destination="DR1-M9-QOA" kind="show" identifier="SuccesfulLogin" id="5yu-vn-uxe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYr-ke-kvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -346,7 +345,4 @@
             <point key="canvasLocation" x="1449" y="-761"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="KxZ-FB-WVJ"/>
-    </inferredMetricsTieBreakers>
 </document>

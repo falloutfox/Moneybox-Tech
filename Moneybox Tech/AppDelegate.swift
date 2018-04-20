@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		
+		self.setupManagers()
+		
 		return true
 	}
 
@@ -41,6 +43,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
 
-
+	//MARK: - Setup Managers
+	
+	func setupManagers() {
+		let dataManager = DataManager()
+		let apiManager = APIManager(dataManager: dataManager)
+		let alertManager = AlertManager(dataManager: dataManager)
+		
+		guard let navCon = window?.rootViewController as? UINavigationController else {
+			return
+		}
+		
+		if let loginVC = navCon.topViewController as? LoginViewController {
+			loginVC.dataManager = dataManager
+			loginVC.apiManager = apiManager
+			loginVC.alertManager = alertManager
+		} else {
+			print("fail")
+		}
+	}
 }
 
