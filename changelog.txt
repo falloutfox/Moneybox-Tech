@@ -1,0 +1,15 @@
+CHANGELOG
+###########
+
+V1
+------
+
+Build 2
+• Changed `Session` to `struct`
+• Replaced `DataManager` Singleton with `DataManager` object
+• Amended the Login UX
+
+Build 1
+• Original Build
+
+------
